@@ -92,13 +92,17 @@
                 }
                 console.log(winner);
             }
-
-
-           
-
+        
         }
 
-        playGame(computerHand(),playerHand());
+
+        function playFiveGames(){
+             for(let i = 1; i<6; i++){ 
+                playGame(computerHand(),playerHand()); 
+            }
+        }    
+
+        playFiveGames();
        
     </script>
     
