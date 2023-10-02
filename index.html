@@ -1,110 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js-file.js" defe></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <script>
-        function computerHand(){
+    <div class="buttons">
+        <button class="rock">ROCK</button>
+        <button class="paper">PAPER</button>
+        <button class="scissors">SCISSORS</button>
+    </div>
 
-            let computerChoice;
-            let randomNumber = Math.floor((Math.random()*3)+1);
-
-            if(randomNumber===1){
-                computerChoice = "rock";
-                
-            }else if(randomNumber===2){
-                computerChoice = "scissors";
-                
-            }else{
-                computerChoice = "paper";
-                 
-            }
-
-            return computerChoice;
-        }
-
-        function playerHand(){
-         
-            let playerChoice = prompt("Choose your move!");
-            playerChoice = playerChoice.toLowerCase();
-            return playerChoice;
-        }
-        
-        function playGame(computerHand, playerHand){
-
-            let winner;
-
-            if(computerHand==="rock"){
-                if(playerHand ==="rock"){
-                    winner = "Rock vs Rock, it's a DRAW !";
-                }
-
-                else if(playerHand==="paper"){
-                    winner = "Rock vs Paper, you WIN !";
-                }
-
-                else if(playerHand==="scissors"){
-                    winner = "Rock vs Scissors, you LOSE!";
-                }
-                else{
-                    winner = "Invalid input, Try again"
-                    console.log(winner);
-                }
-                console.log(winner);
-            }
-
-            if(computerHand==="scissors"){
-                if(playerHand ==="scissors"){
-                    winner = "Scissors vs Scissors, it's a DRAW !";
-                }
-
-                else if(playerHand==="rock"){
-                    winner = "Scissors vs Rock, you WIN !";
-                }
-
-                else if(playerHand==="paper"){
-                    winner = "Scissors vs Paper, you LOSE!";
-                }
-                else{
-                    winner = "Invalid input, Try again"
-
-                }
-                console.log(winner);
-            }
-
-            if(computerHand==="paper"){
-                if(playerHand ==="paper"){
-                    winner = "Paper vs Paper, it's a DRAW !";
-                }
-
-                else if(playerHand==="scissors"){
-                    winner = "Paper vs Scissors, you WIN !";
-                }
-
-                else if(playerHand==="rock"){
-                    winner = "Paper vs Rock, you LOSE!";
-                }
-                else{
-                    winner = "Invalid input, Try again"
-                }
-                console.log(winner);
-            }
-        
-        }
-
-
-        function playFiveGames(){
-             for(let i = 1; i<6; i++){ 
-                playGame(computerHand(),playerHand()); 
-            }
-        }    
-
-        playFiveGames();
-       
-    </script>
-    
 </body>
 </html>
