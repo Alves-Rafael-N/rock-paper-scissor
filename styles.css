@@ -1,0 +1,23 @@
+.score-div{
+    display: flex;
+    justify-content:space-around;
+}
+.button-div{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+button{
+   border-radius: 50%;
+   height: 120px;
+   width: 120px;
+}
+.rock{
+    background-color: brown;
+}
+.paper{
+    background-color: white;
+}
+.scissors{
+    background-color: slategrey;
+}
