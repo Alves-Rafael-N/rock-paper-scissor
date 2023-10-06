@@ -163,10 +163,12 @@ function getPoint(winner){
 
 function testWinner(){
     if(scoreLeftValue >= 5){
-        alert('you won')
+        alert('You won!' + '\nPress the button to play again')
+        location.reload();
     }
     else if(scoreRightValue >= 5){
-        alert('you lost')
+        alert('You lost!'+ '\nPress the button to play again')
+        location.reload();
     }
 }
 
