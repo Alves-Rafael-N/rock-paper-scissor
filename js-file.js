@@ -4,42 +4,64 @@ const scissors = document.querySelector('.scissors');
 
 
 
-
 rock.addEventListener('click', () =>{
     const getPlayerChoice = 'rock';
     const getComputerChoice = computerChoice();
-    if(playGame(getPlayerChoice,getComputerChoice) === 'win'){
+    const result = playGame(getPlayerChoice,getComputerChoice)
+    if(result === 'won'){
         getPoint(scoreLeft);
+        declareWinner(getPlayerChoice,getComputerChoice,'Player ');
     }
-    else if(playGame(getPlayerChoice,getComputerChoice) === 'loss'){
+    else if(result === 'lost'){
         getPoint(scoreRight);
+        declareWinner(getPlayerChoice,getComputerChoice,'Computer ');
+    }
+    else if(result === 'draw'){
+        draw(getPlayerChoice,getComputerChoice);
     }
 })
 
 paper.addEventListener('click', () =>{
     const getPlayerChoice = 'paper';
     const getComputerChoice = computerChoice();
-    if(playGame(getPlayerChoice,getComputerChoice) === 'win'){
+    const result = playGame(getPlayerChoice,getComputerChoice)
+    if(result === 'won'){
         getPoint(scoreLeft);
+        declareWinner(getPlayerChoice,getComputerChoice,'Player ');
+
     }
-    else if(playGame(getPlayerChoice,getComputerChoice) === 'loss'){
+    else if(result === 'lost'){
         getPoint(scoreRight);
+        declareWinner(getPlayerChoice,getComputerChoice,'Computer ');
+
     }
+    else if(result === 'draw'){
+        draw(getPlayerChoice,getComputerChoice);
+    }
+
 })
 
 scissors.addEventListener('click', () =>{
     const getPlayerChoice = 'scissors';
     const getComputerChoice = computerChoice();
-    if(playGame(getPlayerChoice,getComputerChoice) === 'win'){
+    const result = playGame(getPlayerChoice,getComputerChoice)
+    if(result === 'won'){
         getPoint(scoreLeft);
+        declareWinner(getPlayerChoice,getComputerChoice,'Player ');
+
     }
-    else if(playGame(getPlayerChoice,getComputerChoice) === 'loss'){
+    else if(result === 'lost'){
         getPoint(scoreRight);
+        declareWinner(getPlayerChoice,getComputerChoice,'Computer ');
+
+    }
+    else if(result === 'draw'){
+        draw(getPlayerChoice,getComputerChoice);
     }
 })
 
 function computerChoice(){
-    const getComputerChoice = '';
+    let getComputerChoice = '';
     const randomValue = Math.floor(Math.random()*3)+1;
         if(randomValue === 1){
             getComputerChoice = 'rock'
@@ -67,11 +89,11 @@ function playGame (getPlayerChoice,getComputerChoice){
         }
         else if(getComputerChoice === 'paper'){
            // winner = 'Player:rock  VS  Computer:Paper, You LOSE!'
-            winner = 'loss'
+            winner = 'lost'
         }
         else if(getComputerChoice === 'scissors'){
             //winner = 'Player:rock  VS  Computer:Scissors, You WIN!'
-            winner = 'win'
+            winner = 'won'
         }
         else{
             winner = 'error';
@@ -85,11 +107,11 @@ function playGame (getPlayerChoice,getComputerChoice){
         }
         else if(getComputerChoice === 'scissors'){
             //winner = 'Player:Paper  VS  Computer:Scissors, You LOSE!'
-            winner = 'loss'
+            winner = 'lost'
         }
         else if(getComputerChoice === 'rock'){
             //winner = 'Player:Paper  VS  Computer:Rock, You WIN!'
-            winner = 'win'
+            winner = 'won'
         }
         else{
             winner = 'error';
@@ -103,11 +125,11 @@ function playGame (getPlayerChoice,getComputerChoice){
         }
         else if(getComputerChoice === 'rock'){
             //winner = 'Player:Scissors  VS  Computer:Rock, You LOSE!'
-            winner = 'loss'
+            winner = 'lost'
         }
         else if(getComputerChoice ==='paper'){
            // winner = 'Player:Scissors  VS  Computer:Paper, You WIN!'
-           winner = 'win'
+           winner = 'won'
         }
         else{
             winner = 'error';
@@ -129,7 +151,7 @@ let scoreRightValue = 0;
 
 
 function getPoint(winner){
-    winner.textContent = winner.textContent + '*'
+    winner.textContent = winner.textContent + '✰'
     if(winner === scoreLeft){
         scoreLeftValue++
     }   
@@ -148,6 +170,14 @@ function testWinner(){
     }
 }
 
+//announcer
+const announcer = document.querySelector('.announcer')
+function declareWinner(getPlayerChoice,getComputerChoice,winner){
+    announcer.textContent = getPlayerChoice.toUpperCase() + ' vs ' + getComputerChoice.toUpperCase()+' => '+ winner + 'Wins !';
 
+}
 
+function draw(getPlayerChoice,getComputerChoice){
+    announcer.textContent = getPlayerChoice.toUpperCase() + ' vs ' + getComputerChoice.toUpperCase()+ ' =>  it is a '+ 'DRAW !';
+}
 
