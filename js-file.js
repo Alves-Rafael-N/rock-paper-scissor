@@ -5,7 +5,6 @@ const scissors = document.querySelector('.scissors');
 
 
 
-//
 rock.addEventListener('click', () =>{
     const getPlayerChoice = 'rock';
     const getComputerChoice = computerChoice();
@@ -15,7 +14,6 @@ rock.addEventListener('click', () =>{
     else if(playGame(getPlayerChoice,getComputerChoice) === 'loss'){
         getPoint(scoreRight);
     }
-   // alert(playGame(getPlayerChoice,getComputerChoice))
 })
 
 paper.addEventListener('click', () =>{
@@ -27,7 +25,6 @@ paper.addEventListener('click', () =>{
     else if(playGame(getPlayerChoice,getComputerChoice) === 'loss'){
         getPoint(scoreRight);
     }
-   // alert(playGame(getPlayerChoice,getComputerChoice))
 })
 
 scissors.addEventListener('click', () =>{
@@ -39,14 +36,23 @@ scissors.addEventListener('click', () =>{
     else if(playGame(getPlayerChoice,getComputerChoice) === 'loss'){
         getPoint(scoreRight);
     }
-    //alert(playGame(getPlayerChoice,getComputerChoice))
 })
 
 function computerChoice(){
-    const getComputerChoice = Math.floor(Math.random()*3)+1;
+    const getComputerChoice = '';
+    const randomValue = Math.floor(Math.random()*3)+1;
+        if(randomValue === 1){
+            getComputerChoice = 'rock'
+        }
+        else if(randomValue === 2){
+            getComputerChoice = 'paper'
+        }
+        else{
+            getComputerChoice = 'scissors'
+        }
     return getComputerChoice;
 }
-//
+
 
 
 
@@ -55,15 +61,15 @@ function computerChoice(){
 function playGame (getPlayerChoice,getComputerChoice){
     let winner = '';
     if(getPlayerChoice === 'rock'){
-        if(getComputerChoice === 1){
+        if(getComputerChoice === 'rock'){
             //winner = 'Player:rock  VS  Computer:rock, DRAWW!'
             winner = 'draw'
         }
-        else if(getComputerChoice === 2){
+        else if(getComputerChoice === 'paper'){
            // winner = 'Player:rock  VS  Computer:Paper, You LOSE!'
             winner = 'loss'
         }
-        else if(getComputerChoice ===3){
+        else if(getComputerChoice === 'scissors'){
             //winner = 'Player:rock  VS  Computer:Scissors, You WIN!'
             winner = 'win'
         }
@@ -73,15 +79,15 @@ function playGame (getPlayerChoice,getComputerChoice){
     }
     
     else if(getPlayerChoice === 'paper'){
-        if(getComputerChoice === 2){
+        if(getComputerChoice === 'paper'){
             //winner = 'Player:Paper  VS  Computer:Paper, DRAWW!'
             winner = 'draw'
         }
-        else if(getComputerChoice === 3){
+        else if(getComputerChoice === 'scissors'){
             //winner = 'Player:Paper  VS  Computer:Scissors, You LOSE!'
             winner = 'loss'
         }
-        else if(getComputerChoice ===1){
+        else if(getComputerChoice === 'rock'){
             //winner = 'Player:Paper  VS  Computer:Rock, You WIN!'
             winner = 'win'
         }
@@ -91,15 +97,15 @@ function playGame (getPlayerChoice,getComputerChoice){
     }
 
     else if(getPlayerChoice === 'scissors'){
-        if(getComputerChoice === 3){
+        if(getComputerChoice === 'scissors'){
            // winner = 'Player:Scissors  VS  Computer:Scissors, DRAWW!'
             winner = 'draw'
         }
-        else if(getComputerChoice === 1){
+        else if(getComputerChoice === 'rock'){
             //winner = 'Player:Scissors  VS  Computer:Rock, You LOSE!'
             winner = 'loss'
         }
-        else if(getComputerChoice ===2){
+        else if(getComputerChoice ==='paper'){
            // winner = 'Player:Scissors  VS  Computer:Paper, You WIN!'
            winner = 'win'
         }
