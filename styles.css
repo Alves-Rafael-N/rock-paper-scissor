@@ -1,6 +1,6 @@
-.score-div{
+.score-div, .hand-div{
     display: flex;
-    justify-content:space-around;
+    justify-content:space-evenly;
 }
 .button-div{
     display: flex;
@@ -13,11 +13,41 @@ button{
    width: 120px;
 }
 .rock{
-    background-color: brown;
+    background-color:#BC9E82;
 }
 .paper{
-    background-color: white;
+    background-color: #F9FBFF;
 }
 .scissors{
-    background-color: slategrey;
+    background-color: silver;
+}
+.score-left, .player-hand{
+    background-color:#18122B;
+    padding: 18px;
+    width: 240px;
+}
+.score-right, .computer-hand{
+    background-color:#27374D ;
+    width: 240px;
+    padding: 18px;
+}
+.announcer{
+    text-align: center;
+    width: 240px;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #404258;
+    min-height: 100vh;
+    justify-content: center;
+    padding-bottom: 200px;
+}
+.player-hand, .computer-hand{
+    font-weight: bold;
+}
+.score-left, .score-right{
+    color: white;
+    font-weight: bold;
 }

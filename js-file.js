@@ -1,6 +1,7 @@
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const announcer = document.querySelector('.announcer')
 
 
 
@@ -8,16 +9,21 @@ rock.addEventListener('click', () =>{
     const getPlayerChoice = 'rock';
     const getComputerChoice = computerChoice();
     const result = playGame(getPlayerChoice,getComputerChoice)
+    declareChoices(getPlayerChoice,getComputerChoice)
     if(result === 'won'){
         getPoint(scoreLeft);
-        declareWinner(getPlayerChoice,getComputerChoice,'Player ');
+        declareWinner('Player');
+        announcer.style["background-color"] = "green" 
     }
     else if(result === 'lost'){
         getPoint(scoreRight);
-        declareWinner(getPlayerChoice,getComputerChoice,'Computer ');
+        declareWinner('Computer');    
+        announcer.style["background-color"] = "red" 
     }
     else if(result === 'draw'){
         draw(getPlayerChoice,getComputerChoice);
+        announcer.style["background-color"] = "yellow" 
+
     }
 })
 
@@ -25,18 +31,21 @@ paper.addEventListener('click', () =>{
     const getPlayerChoice = 'paper';
     const getComputerChoice = computerChoice();
     const result = playGame(getPlayerChoice,getComputerChoice)
+    declareChoices(getPlayerChoice,getComputerChoice)
     if(result === 'won'){
         getPoint(scoreLeft);
-        declareWinner(getPlayerChoice,getComputerChoice,'Player ');
-
+        declareWinner('Player');
+        announcer.style["background-color"] = "green" 
     }
     else if(result === 'lost'){
         getPoint(scoreRight);
-        declareWinner(getPlayerChoice,getComputerChoice,'Computer ');
-
+        declareWinner('Computer');    
+        announcer.style["background-color"] = "red" 
     }
     else if(result === 'draw'){
         draw(getPlayerChoice,getComputerChoice);
+        announcer.style["background-color"] = "yellow" 
+
     }
 
 })
@@ -45,18 +54,21 @@ scissors.addEventListener('click', () =>{
     const getPlayerChoice = 'scissors';
     const getComputerChoice = computerChoice();
     const result = playGame(getPlayerChoice,getComputerChoice)
+    declareChoices(getPlayerChoice,getComputerChoice)
     if(result === 'won'){
         getPoint(scoreLeft);
-        declareWinner(getPlayerChoice,getComputerChoice,'Player ');
-
+        declareWinner('Player');
+        announcer.style["background-color"] = "green" 
     }
     else if(result === 'lost'){
         getPoint(scoreRight);
-        declareWinner(getPlayerChoice,getComputerChoice,'Computer ');
-
+        declareWinner('Computer');    
+        announcer.style["background-color"] = "red" 
     }
     else if(result === 'draw'){
         draw(getPlayerChoice,getComputerChoice);
+        announcer.style["background-color"] = "yellow" 
+
     }
 })
 
@@ -151,7 +163,7 @@ let scoreRightValue = 0;
 
 
 function getPoint(winner){
-    winner.textContent = winner.textContent + '✰'
+    winner.textContent = winner.textContent + ' ✰'
     if(winner === scoreLeft){
         scoreLeftValue++
     }   
@@ -172,14 +184,41 @@ function testWinner(){
     }
 }
 
-//announcer
-const announcer = document.querySelector('.announcer')
-function declareWinner(getPlayerChoice,getComputerChoice,winner){
-    announcer.textContent = getPlayerChoice.toUpperCase() + ' vs ' + getComputerChoice.toUpperCase()+' => '+ winner + 'Wins !';
+const playerHand = document.querySelector('.player-hand')
+const computerHand = document.querySelector('.computer-hand')
 
+function declareChoices(getPlayerChoice,getComputerChoice){
+    playerHand.textContent = 'You choose: '+getPlayerChoice.toUpperCase();
+    if(getPlayerChoice === 'rock'){
+        playerHand.style["color"] = "#BC9E82"
+    }
+    else if(getPlayerChoice ==='paper'){
+        playerHand.style["color"] = "#F9FBFF"
+
+    }
+    else{
+        playerHand.style["color"] = "silver"
+
+    }
+    computerHand.textContent = 'Computer choose: ' +getComputerChoice.toUpperCase();
+    if(getComputerChoice === 'rock'){
+        computerHand.style["color"] = "#BC9E82"
+    }
+    else if(getComputerChoice ==='paper'){
+        computerHand.style["color"] = "#F9FBFF"
+
+    }
+    else{
+        computerHand.style["color"] = "silver"
+
+    }
 }
 
-function draw(getPlayerChoice,getComputerChoice){
-    announcer.textContent = getPlayerChoice.toUpperCase() + ' vs ' + getComputerChoice.toUpperCase()+ ' =>  it is a '+ 'DRAW !';
+
+function declareWinner(winner){
+    announcer.textContent = winner + ' Wins !';
 }
 
+function draw(){
+    announcer.textContent = 'Draw !'
+}
